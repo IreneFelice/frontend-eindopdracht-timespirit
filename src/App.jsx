@@ -27,12 +27,22 @@ function App() {
       }
     }
 
+        useEffect(()=>{
+            if (count == 3) {
+            fetchData();
+            console.log('groter dan 3');
+            } else {
+                setFacts([]);
+                ;
+            }
+           },[count]);
 
-  return (
+    return (
     <>
 
       <h1>Time Spirit</h1>
-        <div>{facts.map((el,i) => {
+        <div>{facts.map((el,i) =>
+             {
             return (
                 <div key={i}>
                     {el.fact}
@@ -40,13 +50,15 @@ function App() {
             );
         })}</div>
 
-        <button type="button" onClick={fetchData}> Klik hier!
-        </button>
+        {/*<button type="button" onClick={fetchData}> Klik hier!*/}
+        {/*</button>*/}
+
 
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count to {count}
         </button>
+
         <p>
           click button to count
         </p>
